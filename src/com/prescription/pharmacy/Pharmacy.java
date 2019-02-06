@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Pharmacy {
     private List<Inventory> stock;
+    private List<String> allowedJurisdictions;
     private String pharmacyName;
 
     public Pharmacy(String pharmacyName) {
@@ -36,6 +37,14 @@ public class Pharmacy {
 
     public void setStock(List<Inventory> stock) {
         this.stock = stock;
+    }
+
+    public List<String> getAllowedJurisdictions() {
+        return allowedJurisdictions;
+    }
+
+    public void setAllowedJurisdictions(List<String> allowedJurisdictions) {
+        this.allowedJurisdictions = allowedJurisdictions;
     }
 
     public String getPharmacyName() {

@@ -1,9 +1,12 @@
 package com.prescription.pharmacy;
 
+import java.util.List;
+
 public class Inventory {
     private String item;
     private int available;
     private int cost;
+    private List<Price> otherPrices;
 
     public Inventory(String item, int available, int cost) {
         this.item = item;
@@ -33,5 +36,13 @@ public class Inventory {
 
     public void setCost(int cost) {
         this.cost = cost;
+    }
+
+    public List<Price> getOtherPrices() {
+        return otherPrices;
+    }
+
+    public void setOtherPrices(List<Price> otherPrices) {
+        this.otherPrices = otherPrices;
     }
 }
