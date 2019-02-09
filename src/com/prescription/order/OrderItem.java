@@ -1,19 +1,19 @@
 package com.prescription.order;
 
 public class OrderItem {
-    private String item;
+    private Item item;
     private int count;
 
-    public OrderItem(String item, int count) {
+    public OrderItem(Item item, int count) {
         this.item = item;
         this.count = count;
     }
 
-    public String getItem() {
+    public Item getItem() {
         return item;
     }
 
-    public void setItem(String item) {
+    public void setItem(Item item) {
         this.item = item;
     }
 
@@ -23,5 +23,10 @@ public class OrderItem {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    @Override
+    public String toString() {
+        return this.item + "; Count : "+ this.count;
     }
 }

@@ -4,6 +4,11 @@ public class Price {
     private String payer;
     private int cost;
 
+    public Price(String payer, int cost) {
+        this.payer = payer;
+        this.cost = cost;
+    }
+
     public String getPayer() {
         return payer;
     }
