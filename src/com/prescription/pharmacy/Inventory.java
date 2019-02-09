@@ -1,24 +1,27 @@
 package com.prescription.pharmacy;
 
+import com.prescription.order.Item;
+
 import java.util.List;
 
 public class Inventory {
-    private String item;
+    private Item item;
     private int available;
     private int cost;
     private List<Price> otherPrices;
 
-    public Inventory(String item, int available, int cost) {
+    public Inventory(Item item, int available, int cost, List<Price> otherPrices) {
         this.item = item;
         this.available = available;
         this.cost = cost;
+        this.otherPrices = otherPrices;
     }
 
-    public String getItem() {
+    public Item getItem() {
         return item;
     }
 
-    public void setItem(String item) {
+    public void setItem(Item item) {
         this.item = item;
     }
 

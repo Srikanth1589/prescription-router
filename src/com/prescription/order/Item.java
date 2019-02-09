@@ -5,6 +5,12 @@ public class Item {
     private String drug;
     private boolean isGeneric;
 
+    public Item(String item, String drug, boolean isGeneric) {
+        this.item = item;
+        this.drug = drug;
+        this.isGeneric = isGeneric;
+    }
+
     public String getItem() {
         return item;
     }
@@ -27,5 +33,10 @@ public class Item {
 
     public void setGeneric(boolean generic) {
         isGeneric = generic;
+    }
+
+    @Override
+    public String toString() {
+        return "Item Name: "+ this.item + "; Drug : "+ this.drug + "; isGeneric : "+ this.isGeneric;
     }
 }
