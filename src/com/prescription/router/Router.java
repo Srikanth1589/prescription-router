@@ -116,7 +116,7 @@ public class Router implements IRouter {
 
         @Override
         public String toString() {
-            return "Assignment: "+ this.assignment + "; Cost : "+ this.cost;
+            return this.assignment + "; Cost : "+ this.cost;
         }
     }
 }

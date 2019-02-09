@@ -30,6 +30,6 @@ public class Assignment {
 
     @Override
     public String toString() {
-        return "Order Item: "+ this.item + "; Pharmacy : "+ this.site.getPharmacyName();
+        return this.item + "; Pharmacy : "+ this.site.getPharmacyName();
     }
 }

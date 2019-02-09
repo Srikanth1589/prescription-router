@@ -114,9 +114,16 @@ public class RouterClient {
 
         //Price Estimations
         List<Router.PriceEstimation> priceEstimations = router.calculatePotentialPrice(newOrder);
-        priceEstimations.stream().forEach(priceEstimation -> System.out.println(priceEstimation));
+        System.out.println("PRICE ESTIMATION ::");
+        int totalCost = 0;
+        for (Router.PriceEstimation priceEstimation : priceEstimations) {
+            totalCost += priceEstimation.getCost();
+            System.out.println(priceEstimation);
+        }
+        System.out.println("Total Cost of the order: " + totalCost);
         //Assignments
         List<Assignment> assignments = router.assign(newOrder);
-        System.out.println(assignments);
+        System.out.println("ASSIGNMENT ::");
+        assignments.forEach(assignment -> System.out.println(assignment));
     }
 }

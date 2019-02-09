@@ -27,6 +27,6 @@ public class OrderItem {
 
     @Override
     public String toString() {
-        return "Item: "+ this.item + "; Count : "+ this.count;
+        return this.item + "; Count : "+ this.count;
     }
 }
