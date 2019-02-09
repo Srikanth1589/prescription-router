@@ -8,7 +8,7 @@ import java.util.List;
 public interface IRouter {
     List<Assignment> assign(Order o);
 
-    List<Router.PriceEstimation> calculatePotentialPrice(Order order);
+    List<PriceEstimation> calculatePotentialPrice(Order order);
 
     void setSites(List<Pharmacy> sites);
 }

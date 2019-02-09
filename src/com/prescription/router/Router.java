@@ -33,6 +33,10 @@ public class Router implements IRouter {
                 .collect(Collectors.toList());
     }
 
+    /*
+        Assumptions made : NURX can fullfil the order after estimating the price.
+                           So, pharmacy has enough stock is a filter used.
+     */
     @Override
     public List<PriceEstimation> calculatePotentialPrice(Order order) {
         //Get items and their corresponding available pharmacies by checking if
@@ -47,13 +51,15 @@ public class Router implements IRouter {
                                 .collect(Collectors.toList())
                 ));
 
+        //TODO: Add comments --- Correct Insurance cost part
         for (Map.Entry<OrderItem, List<Pharmacy>> entry : orderItemPharmacyMap.entrySet()) {
             Optional<PharmacyCost> pharmacyCostOptional = entry.getValue().stream().map(pharmacy ->
                 new PharmacyCost(pharmacy, pharmacy.estimateShippingForOrderItem(entry.getKey(), order))
             ).sorted(Comparator.comparingInt(PharmacyCost::getCost)).findFirst();
 
-            if (pharmacyCostOptional.isPresent())
-                priceEstimations.add(new PriceEstimation(new Assignment(entry.getKey(), pharmacyCostOptional.get().getPharmacy()), pharmacyCostOptional.get().getCost()));
+            pharmacyCostOptional.ifPresent(pharmacyCost ->
+                    priceEstimations.add(new PriceEstimation(
+                            new Assignment(entry.getKey(), pharmacyCost.getPharmacy()), pharmacyCost.getCost())));
         }
         return priceEstimations;
     }
@@ -86,37 +92,6 @@ public class Router implements IRouter {
 
         public void setCost(int cost) {
             this.cost = cost;
-        }
-    }
-
-    public static class PriceEstimation {
-        private Assignment assignment;
-        private int cost;
-
-        public PriceEstimation(Assignment assignment, int cost) {
-            this.assignment = assignment;
-            this.cost = cost;
-        }
-
-        public Assignment getAssignment() {
-            return assignment;
-        }
-
-        public void setAssignment(Assignment assignment) {
-            this.assignment = assignment;
-        }
-
-        public int getCost() {
-            return cost;
-        }
-
-        public void setCost(int cost) {
-            this.cost = cost;
-        }
-
-        @Override
-        public String toString() {
-            return this.assignment + "; Cost : "+ this.cost;
         }
     }
 }
