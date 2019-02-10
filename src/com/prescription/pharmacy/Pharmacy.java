@@ -39,7 +39,8 @@ public class Pharmacy {
         List<Inventory> requiredItems = getSpecificItem(orderItem.getItem());
         int lowCostItem = Integer.MAX_VALUE;
         for (Inventory inventory : requiredItems) {
-            Optional<Price> insurancePrice = inventory.getOtherPrices().stream().filter(price -> price.getPayer().equals(order.getPayer())).findFirst();
+            Optional<Price> insurancePrice = inventory.getOtherPrices().stream()
+                    .filter(price -> order.getPayer() != null && price.getPayer().equals(order.getPayer())).findFirst();
             int temp = orderItem.getCount() * (insurancePrice.map(Price::getCost).orElseGet(inventory::getCost));
             lowCostItem = temp < lowCostItem ? temp : lowCostItem;
         }

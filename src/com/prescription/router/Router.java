@@ -25,11 +25,12 @@ public class Router implements IRouter {
     }
 
     /*
+        Get the predicted cost per order item
         Assumptions made : NURX can fulfill the order after estimating the price.
                            So, pharmacy has enough stock is a filter used.
      */
     @Override
-    public List<PriceEstimation> calculatePotentialPrice(Order order) {
+    public List<PriceEstimation> calculatePotentialPriceForOrderItems(Order order) {
 
         List<PriceEstimation> priceEstimations = new ArrayList<>();
         Map<OrderItem, List<Pharmacy>> orderItemPharmacyMap = getOrderItemPharmacyListMap(order);
@@ -61,6 +62,15 @@ public class Router implements IRouter {
                                             site.isInAllowedJurisdiction(order.getJurisdiction()))
                                     .collect(Collectors.toList())
                     ));
+    }
+
+    /*
+        Just get the total cost of the order
+     */
+    @Override
+    public int getTotalCostOfTheOrder(Order order) {
+        List<PriceEstimation> priceEstimations = calculatePotentialPriceForOrderItems(order);
+        return priceEstimations.stream().mapToInt(PriceEstimation::getCost).sum();
     }
 
     @Override
