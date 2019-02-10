@@ -11,16 +11,7 @@ public class Router implements IRouter {
 
     @Override
     public List<Assignment> assign(Order order) {
-        //Get items and their corresponding available pharmacies by checking if
-        //pharmacies have enough stock and in allowed jurisdiction
-        Map<OrderItem, List<Pharmacy>> orderItemPharmacyMap = order.getItems().stream()
-                .collect(Collectors.toMap(
-                        orderItem -> orderItem,
-                        orderItem -> sites.stream()
-                                .filter(site -> site.containsEnoughItems(orderItem) &&
-                                                site.isInAllowedJurisdiction(order.getJurisdiction()))
-                                .collect(Collectors.toList())
-                ));
+        Map<OrderItem, List<Pharmacy>> orderItemPharmacyMap = getOrderItemPharmacyListMap(order);
 
         //Sort the pharmacies by shipping costs
         orderItemPharmacyMap.forEach((orderItem, pharmacies) -> pharmacies.sort(
@@ -34,24 +25,17 @@ public class Router implements IRouter {
     }
 
     /*
-        Assumptions made : NURX can fullfil the order after estimating the price.
+        Assumptions made : NURX can fulfill the order after estimating the price.
                            So, pharmacy has enough stock is a filter used.
      */
     @Override
     public List<PriceEstimation> calculatePotentialPrice(Order order) {
-        //Get items and their corresponding available pharmacies by checking if
-        //pharmacies have enough stock and in allowed jurisdiction
-        List<PriceEstimation> priceEstimations = new ArrayList<>();
-        Map<OrderItem, List<Pharmacy>> orderItemPharmacyMap = order.getItems().stream()
-                .collect(Collectors.toMap(
-                        orderItem -> orderItem,
-                        orderItem -> sites.stream()
-                                .filter(site -> site.containsEnoughItems(orderItem) &&
-                                        site.isInAllowedJurisdiction(order.getJurisdiction()))
-                                .collect(Collectors.toList())
-                ));
 
-        //TODO: Add comments --- Correct Insurance cost part
+        List<PriceEstimation> priceEstimations = new ArrayList<>();
+        Map<OrderItem, List<Pharmacy>> orderItemPharmacyMap = getOrderItemPharmacyListMap(order);
+
+        //Find the cheapest order item filling pharmacy and the cost and store it in
+        //PriceEstimation object for each Assignment
         for (Map.Entry<OrderItem, List<Pharmacy>> entry : orderItemPharmacyMap.entrySet()) {
             Optional<PharmacyCost> pharmacyCostOptional = entry.getValue().stream().map(pharmacy ->
                 new PharmacyCost(pharmacy, pharmacy.estimateShippingForOrderItem(entry.getKey(), order))
@@ -62,6 +46,21 @@ public class Router implements IRouter {
                             new Assignment(entry.getKey(), pharmacyCost.getPharmacy()), pharmacyCost.getCost())));
         }
         return priceEstimations;
+    }
+
+    /*
+        Get items and their corresponding available pharmacies by checking if
+        pharmacies have enough stock and is in allowed jurisdiction
+     */
+    private Map<OrderItem, List<Pharmacy>> getOrderItemPharmacyListMap(Order order) {
+        return order.getItems().stream()
+                    .collect(Collectors.toMap(
+                            orderItem -> orderItem,
+                            orderItem -> sites.stream()
+                                    .filter(site -> site.containsEnoughItems(orderItem) &&
+                                            site.isInAllowedJurisdiction(order.getJurisdiction()))
+                                    .collect(Collectors.toList())
+                    ));
     }
 
     @Override
