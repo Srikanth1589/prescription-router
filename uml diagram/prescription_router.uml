@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.prescription.router</OriginalElement>
+  <nodes>
+    <node x="247.8611111111111" y="1211.0">com.prescription.router.Router.PharmacyCost</node>
+    <node x="215.74371665332762" y="573.0">com.prescription.pharmacy.Pharmacy</node>
+    <node x="202.36871665332762" y="1418.0">com.prescription.router.Router</node>
+    <node x="470.62609710550913" y="871.0">com.prescription.router.Assignment</node>
+    <node x="744.9103833199943" y="1211.0">com.prescription.router.IRouter</node>
+    <node x="1001.1603833199943" y="0.0">com.prescription.order.Item</node>
+    <node x="1076.9103833199943" y="202.0">com.prescription.order.OrderItem</node>
+    <node x="542.9027777777778" y="1041.0">com.prescription.router.PriceEstimation</node>
+    <node x="652.7792850473531" y="1647.0">RouterClient</node>
+    <node x="1155.9103833199943" y="404.5">com.prescription.order.Order</node>
+    <node x="36.5" y="382.0">com.prescription.pharmacy.Inventory</node>
+    <node x="107.86871665332762" y="213.5">com.prescription.pharmacy.Price</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.prescription.router.Router.PharmacyCost" target="com.prescription.pharmacy.Pharmacy">
+      <point x="64.25" y="-48.5" />
+      <point x="440.6111111111111" y="1186.0" />
+      <point x="378.16189058956957" y="1186.0" />
+      <point x="378.16189058956957" y="851.0" />
+      <point x="454.6881610977721" y="851.0" />
+      <point x="43.44444444444446" y="104.0" />
+    </edge>
+    <edge source="com.prescription.pharmacy.Pharmacy" target="com.prescription.pharmacy.Price">
+      <point x="-32.58333333333326" y="-104.0" />
+      <point x="378.66038331999437" y="548.0" />
+      <point x="432.827049986661" y="548.0" />
+      <point x="432.827049986661" y="352.0" />
+      <point x="260.9937166533276" y="352.0" />
+      <point x="65.625" y="48.5" />
+    </edge>
+    <edge source="com.prescription.router.IRouter" target="com.prescription.router.PriceEstimation">
+      <point x="-146.25" y="-48.5" />
+      <point x="793.6603833199943" y="1186.0" />
+      <point x="784.4027777777778" y="1186.0" />
+      <point x="103.5" y="60.0" />
+    </edge>
+    <edge source="com.prescription.router.Router" target="com.prescription.router.IRouter">
+      <point x="150.79166666666663" y="-59.5" />
+      <point x="611.6603833199943" y="1378.0" />
+      <point x="842.4103833199943" y="1378.0" />
+      <point x="-97.5" y="48.5" />
+    </edge>
+    <edge source="com.prescription.order.Order" target="com.prescription.order.OrderItem">
+      <point x="-47.5" y="-48.0" />
+      <point x="1203.4103833199943" y="362.0" />
+      <point x="1186.5978833199943" y="362.0" />
+      <point x="12.1875" y="60.0" />
+    </edge>
+    <edge source="RouterClient" target="com.prescription.order.OrderItem">
+      <point x="62.0" y="-26.0" />
+      <point x="807.7792850473531" y="1607.0" />
+      <point x="1367.4103833199943" y="1607.0" />
+      <point x="1367.4103833199943" y="342.0" />
+      <point x="1259.7228833199943" y="342.0" />
+      <point x="85.3125" y="60.0" />
+    </edge>
+    <edge source="com.prescription.router.PriceEstimation" target="com.prescription.router.Assignment">
+      <point x="69.0" y="-60.0" />
+      <point x="749.9027777777778" y="1021.0" />
+      <point x="685.1260971055092" y="1021.0" />
+      <point x="71.5" y="60.0" />
+    </edge>
+    <edge source="com.prescription.order.OrderItem" target="com.prescription.order.Item">
+      <point x="48.75" y="-60.0" />
+      <point x="1223.1603833199943" y="182.0" />
+      <point x="1161.231811891423" y="182.0" />
+      <point x="35.57142857142867" y="71.0" />
+    </edge>
+    <edge source="com.prescription.router.Assignment" target="com.prescription.pharmacy.Pharmacy">
+      <point x="-107.25" y="-60.0" />
+      <point x="506.37609710550913" y="851.0" />
+      <point x="498.13260554221654" y="851.0" />
+      <point x="86.88888888888891" y="104.0" />
+    </edge>
+    <edge source="com.prescription.router.Assignment" target="com.prescription.order.OrderItem">
+      <point x="107.25" y="-60.0" />
+      <point x="720.8760971055092" y="851.0" />
+      <point x="689.5353833199943" y="851.0" />
+      <point x="689.5353833199943" y="362.0" />
+      <point x="1137.8478833199943" y="362.0" />
+      <point x="-36.5625" y="60.0" />
+    </edge>
+    <edge source="RouterClient" target="com.prescription.router.Router">
+      <point x="-12.399999999999977" y="-26.0" />
+      <point x="733.3792850473532" y="1567.0" />
+      <point x="460.8687166533276" y="1567.0" />
+      <point x="0.0" y="59.5" />
+    </edge>
+    <edge source="com.prescription.pharmacy.Pharmacy" target="com.prescription.order.Item">
+      <point x="32.58333333333337" y="-104.0" />
+      <point x="443.827049986661" y="182.0" />
+      <point x="1090.0889547485658" y="182.0" />
+      <point x="-35.571428571428555" y="71.0" />
+    </edge>
+    <edge source="com.prescription.pharmacy.Pharmacy" target="com.prescription.pharmacy.Inventory">
+      <point x="-162.91666666666669" y="-104.0" />
+      <point x="248.327049986661" y="548.0" />
+      <point x="219.0" y="548.0" />
+      <point x="36.5" y="70.5" />
+    </edge>
+    <edge source="com.prescription.router.Router" target="com.prescription.router.Router.PharmacyCost">
+      <point x="-150.79166666666686" y="-59.5" />
+      <point x="310.07704998666077" y="1398.0" />
+      <point x="290.6944444444444" y="1398.0" />
+      <point x="-85.66666666666669" y="48.5" />
+    </edge>
+    <edge source="RouterClient" target="com.prescription.pharmacy.Pharmacy">
+      <point x="-49.60000000000002" y="-26.0" />
+      <point x="696.1792850473531" y="1597.0" />
+      <point x="169.86871665332762" y="1597.0" />
+      <point x="169.86871665332762" y="801.0" />
+      <point x="237.4659388755499" y="801.0" />
+      <point x="-173.77777777777771" y="104.0" />
+    </edge>
+    <edge source="com.prescription.router.IRouter" target="com.prescription.router.Assignment">
+      <point x="-48.75" y="-48.5" />
+      <point x="891.1603833199943" y="1186.0" />
+      <point x="934.4103833199943" y="1186.0" />
+      <point x="934.4103833199943" y="1011.0" />
+      <point x="732.7927637721757" y="1011.0" />
+      <point x="119.16666666666652" y="60.0" />
+    </edge>
+    <edge source="com.prescription.router.Router" target="com.prescription.router.Assignment">
+      <point x="21.54166666666663" y="-59.5" />
+      <point x="482.41038331999425" y="1348.0" />
+      <point x="532.2569444444443" y="1348.0" />
+      <point x="532.2569444444443" y="1021.0" />
+      <point x="589.7927637721759" y="1021.0" />
+      <point x="-23.833333333333258" y="60.0" />
+    </edge>
+    <edge source="RouterClient" target="com.prescription.router.PriceEstimation">
+      <point x="0.0" y="-26.0" />
+      <point x="745.7792850473531" y="1557.0" />
+      <point x="729.8687166533276" y="1557.0" />
+      <point x="729.8687166533276" y="1186.0" />
+      <point x="715.4027777777778" y="1186.0" />
+      <point x="34.5" y="60.0" />
+    </edge>
+    <edge source="com.prescription.pharmacy.Inventory" target="com.prescription.pharmacy.Price">
+      <point x="36.5" y="-70.5" />
+      <point x="219.0" y="362.0" />
+      <point x="217.24371665332762" y="362.0" />
+      <point x="21.875" y="48.5" />
+    </edge>
+    <edge source="RouterClient" target="com.prescription.order.Order">
+      <point x="37.19999999999993" y="-26.0" />
+      <point x="782.9792850473531" y="1587.0" />
+      <point x="1306.355263772176" y="1587.0" />
+      <point x="1306.355263772176" y="548.0" />
+      <point x="1326.9103833199943" y="548.0" />
+      <point x="75.99999999999994" y="48.0" />
+    </edge>
+    <edge source="com.prescription.pharmacy.Pharmacy" target="com.prescription.order.Order">
+      <point x="162.91666666666674" y="-104.0" />
+      <point x="574.1603833199944" y="548.0" />
+      <point x="1174.9103833199943" y="548.0" />
+      <point x="-76.0" y="48.0" />
+    </edge>
+    <edge source="com.prescription.router.Router" target="com.prescription.order.Order">
+      <point x="236.95833333333337" y="-59.5" />
+      <point x="697.827049986661" y="1398.0" />
+      <point x="1260.0160572562363" y="1398.0" />
+      <point x="1260.0160572562363" y="548.0" />
+      <point x="1250.9103833199943" y="548.0" />
+      <point x="0.0" y="48.0" />
+    </edge>
+    <edge source="com.prescription.pharmacy.Inventory" target="com.prescription.order.Item">
+      <point x="109.5" y="-70.5" />
+      <point x="292.0" y="362.0" />
+      <point x="293.3687166533276" y="362.0" />
+      <point x="293.3687166533276" y="172.0" />
+      <point x="1054.5175261771371" y="172.0" />
+      <point x="-71.14285714285711" y="71.0" />
+    </edge>
+    <edge source="RouterClient" target="com.prescription.order.Item">
+      <point x="74.39999999999998" y="-26.0" />
+      <point x="820.1792850473531" y="1617.0" />
+      <point x="1378.4103833199943" y="1617.0" />
+      <point x="1378.4103833199943" y="172.0" />
+      <point x="1196.8032404628516" y="172.0" />
+      <point x="71.14285714285722" y="71.0" />
+    </edge>
+    <edge source="com.prescription.router.IRouter" target="com.prescription.order.Order">
+      <point x="146.25" y="-48.5" />
+      <point x="1086.1603833199943" y="1186.0" />
+      <point x="1231.3344045951715" y="1186.0" />
+      <point x="1231.3344045951715" y="548.0" />
+      <point x="1212.9103833199943" y="548.0" />
+      <point x="-38.0" y="48.0" />
+    </edge>
+    <edge source="RouterClient" target="com.prescription.router.IRouter">
+      <point x="12.399999999999977" y="-26.0" />
+      <point x="758.1792850473531" y="1567.0" />
+      <point x="1037.4103833199943" y="1567.0" />
+      <point x="97.5" y="48.5" />
+    </edge>
+    <edge source="com.prescription.pharmacy.Pharmacy" target="com.prescription.order.OrderItem">
+      <point x="97.75" y="-104.0" />
+      <point x="508.9937166533276" y="548.0" />
+      <point x="454.827049986661" y="548.0" />
+      <point x="454.827049986661" y="342.0" />
+      <point x="1089.0978833199943" y="342.0" />
+      <point x="-85.3125" y="60.0" />
+    </edge>
+    <edge source="com.prescription.router.Router" target="com.prescription.pharmacy.Pharmacy">
+      <point x="-236.9583333333336" y="-59.5" />
+      <point x="223.91038331999403" y="1398.0" />
+      <point x="226.3611111111111" y="1398.0" />
+      <point x="226.3611111111111" y="821.0" />
+      <point x="324.3548277644387" y="821.0" />
+      <point x="-86.88888888888891" y="104.0" />
+    </edge>
+    <edge source="com.prescription.router.IRouter" target="com.prescription.pharmacy.Pharmacy">
+      <point x="48.75" y="-48.5" />
+      <point x="988.6603833199943" y="1186.0" />
+      <point x="953.0844045951715" y="1186.0" />
+      <point x="953.0844045951715" y="841.0" />
+      <point x="585.0214944311055" y="841.0" />
+      <point x="173.77777777777783" y="104.0" />
+    </edge>
+    <edge source="com.prescription.router.Router" target="com.prescription.router.PriceEstimation">
+      <point x="64.625" y="-59.5" />
+      <point x="525.4937166533276" y="1358.0" />
+      <point x="599.4594304388424" y="1358.0" />
+      <point x="599.4594304388424" y="1186.0" />
+      <point x="577.4027777777778" y="1186.0" />
+      <point x="-103.5" y="60.0" />
+    </edge>
+    <edge source="com.prescription.router.Router" target="com.prescription.order.OrderItem">
+      <point x="193.875" y="-59.5" />
+      <point x="654.7437166533276" y="1388.0" />
+      <point x="1145.4103833199943" y="1388.0" />
+      <point x="1145.4103833199943" y="362.0" />
+      <point x="1162.2228833199943" y="362.0" />
+      <point x="-12.1875" y="60.0" />
+    </edge>
+    <edge source="RouterClient" target="com.prescription.pharmacy.Price">
+      <point x="-86.80000000000007" y="-26.0" />
+      <point x="658.9792850473531" y="1627.0" />
+      <point x="26.0" y="1627.0" />
+      <point x="26.0" y="362.0" />
+      <point x="129.74371665332762" y="362.0" />
+      <point x="-65.625" y="48.5" />
+    </edge>
+    <edge source="RouterClient" target="com.prescription.router.Assignment">
+      <point x="-24.800000000000068" y="-26.0" />
+      <point x="720.9792850473531" y="1577.0" />
+      <point x="191.86871665332762" y="1577.0" />
+      <point x="191.86871665332762" y="1021.0" />
+      <point x="494.4594304388425" y="1021.0" />
+      <point x="-119.16666666666663" y="60.0" />
+    </edge>
+    <edge source="RouterClient" target="com.prescription.pharmacy.Inventory">
+      <point x="-74.40000000000009" y="-26.0" />
+      <point x="671.379285047353" y="1617.0" />
+      <point x="75.87650726957531" y="1617.0" />
+      <point x="75.87650726957531" y="548.0" />
+      <point x="73.0" y="548.0" />
+      <point x="-109.5" y="70.5" />
+    </edge>
+    <edge source="com.prescription.router.Router.PharmacyCost" target="com.prescription.router.Router">
+      <point x="85.66666666666674" y="48.5" />
+      <point x="462.0277777777778" y="1328.0" />
+      <point x="396.2437166533275" y="1328.0" />
+      <point x="-64.62500000000011" y="-59.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="641.0" y="1085.0" />
+  <SelectedNodes>
+    <node>RouterClient</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Constructors</Category>
+    <Category>Properties</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

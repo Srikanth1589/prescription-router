@@ -116,15 +116,15 @@ public class RouterClient {
         newOrder.setJurisdiction("CA");
         newOrder.setPayer("Blue Shield");
 
-        //Price Estimations
-        List<PriceEstimation> priceEstimations = router.calculatePotentialPrice(newOrder);
+        //Get Explicit Price Estimations for order items
+        List<PriceEstimation> priceEstimations = router.calculatePotentialPriceForOrderItems(newOrder);
         System.out.println("PRICE ESTIMATION ::");
-        int totalCost = 0;
-        for (PriceEstimation priceEstimation : priceEstimations) {
-            totalCost += priceEstimation.getCost();
-            System.out.println(priceEstimation);
-        }
+        priceEstimations.forEach(priceEstimation -> System.out.println(priceEstimation));
+
+        //Just get the total cost estimation of the order
+        int totalCost = router.getTotalCostOfTheOrder(newOrder);
         System.out.println("Total Cost of the order: $" + totalCost);
+
         //Assignments
         List<Assignment> assignments = router.assign(newOrder);
         System.out.println("ASSIGNMENT ::");

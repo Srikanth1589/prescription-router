@@ -17,7 +17,7 @@ public class Pharmacy {
         this.pharmacyName = pharmacyName;
     }
 
-    public List<Inventory> getSpecificItem(Item item) {
+    private List<Inventory> getSpecificItem(Item item) {
         return stock.stream().filter(inventory -> inventory.getItem().equals(item) ||
                 (inventory.getItem().getDrug().equals(item.getDrug()) && item.isGeneric())).collect(Collectors.toList());
     }
@@ -32,11 +32,15 @@ public class Pharmacy {
         return allowedJurisdictions.contains(jurisdiction);
     }
 
+    /*
+        Assumption: The cost of the item will be cheaper if the inventory of that item has the payer's insurance
+     */
     public int estimateShippingForOrderItem(OrderItem orderItem, Order order) {
         List<Inventory> requiredItems = getSpecificItem(orderItem.getItem());
         int lowCostItem = Integer.MAX_VALUE;
         for (Inventory inventory : requiredItems) {
-            Optional<Price> insurancePrice = inventory.getOtherPrices().stream().filter(price -> price.getPayer().equals(order.getPayer())).findFirst();
+            Optional<Price> insurancePrice = inventory.getOtherPrices().stream()
+                    .filter(price -> order.getPayer() != null && price.getPayer().equals(order.getPayer())).findFirst();
             int temp = orderItem.getCount() * (insurancePrice.map(Price::getCost).orElseGet(inventory::getCost));
             lowCostItem = temp < lowCostItem ? temp : lowCostItem;
         }
