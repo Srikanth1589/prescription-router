@@ -123,11 +123,10 @@ public class RouterClient {
 
         //Just get the total cost estimation of the order
         int totalCost = router.getTotalCostOfTheOrder(newOrder);
-        System.out.println("Total Cost of the order: $" + totalCost);
-
+        System.out.println("\nTotal Cost of the order: $" + totalCost);
         //Assignments
         List<Assignment> assignments = router.assign(newOrder);
-        System.out.println("ASSIGNMENT ::");
+        System.out.println("\nASSIGNMENT ::");
         assignments.forEach(assignment -> System.out.println(assignment));
     }
 }

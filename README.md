@@ -2,7 +2,7 @@
 Prescription Router is a routing program to see how efficiently we can route the prescription drugs across locations. 
 Also predict the cost of the order based on certain criterias 
 
-You can run the project by running the class RouterClient.
+You can run the project by running the class `RouterClient` or by running `java -jar prescription-router.jar` in the project folder
 
 ### Assigning the order
    - Check for order items and which pharmacies can fulfill the order item
